@@ -32,7 +32,7 @@ export default function rhchInit(rowheight, colwidth) {
 
         // 如果增加行和回到顶部按钮隐藏，则减少底部空白区域，但是预留足够空间给单元格下拉按钮
         if (!luckysheetConfigsetting.enableAddRow && !luckysheetConfigsetting.enableAddBackTop) {
-            Store.rh_height += 29;
+            Store.rh_height += 0;
         } else {
             Store.rh_height += 80;  //最底部增加空白
         }

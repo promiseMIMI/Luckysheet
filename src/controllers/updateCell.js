@@ -95,7 +95,9 @@ export function luckysheetupdateCell(row_index1, col_index1, d, cover, isnotfocu
 
     Store.luckysheetCellUpdate = [row_index, col_index];
     if (!isnotfocus) {
-        $("#luckysheet-rich-text-editor").focus().select();
+        // $("#luckysheet-rich-text-editor").focus().select();
+        const info = document.getElementById('luckysheet-rich-text-editor')
+        info.focus({preventScroll:true})
     }
 
     $("#luckysheet-input-box").removeAttr("style").css({ 
@@ -225,7 +227,10 @@ export function luckysheetupdateCell(row_index1, col_index1, d, cover, isnotfocu
         value = formula.ltGtSignDeal(value);
         $("#luckysheet-rich-text-editor").html(value);
         if (!isnotfocus) {
-            luckysheetRangeLast($("#luckysheet-rich-text-editor")[0]);
+            const info = document.getElementById('luckysheet-rich-text-editor')
+            // luckysheetRangeLast($("#luckysheet-rich-text-editor")[0]);
+            luckysheetRangeLast(info);
+        // }
         }
     }
 

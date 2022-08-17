@@ -6,6 +6,7 @@ import editor from './editor';
 import { dynamicArrayCompute } from './dynamicArray';
 import sheetmanage from '../controllers/sheetmanage';
 import { isInlineStringCT,isInlineStringCell,convertCssToStyleList } from '../controllers/inlineString';
+import luckysheetConfigsetting from '../controllers/luckysheetConfigsetting';
 import locale from '../locale/locale';
 import Store from '../store';
 
@@ -415,13 +416,13 @@ export function checkstatusByCell(cell, a){
     }
     else if(a == "fc"){
         if(foucsStatus == null){
-            foucsStatus = "#000000";
+            foucsStatus = luckysheetConfigsetting.defaultTextColor;
         }
         else{
             foucsStatus = foucsStatus[a];
-
+            // REVISE 字体未选中颜色，默认颜色
             if(foucsStatus == null){
-                foucsStatus = "#000000";
+                foucsStatus = luckysheetConfigsetting.defaultTextColor || "#000";
             }
 
             if(foucsStatus.indexOf("rgba") > -1){

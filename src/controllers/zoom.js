@@ -172,6 +172,8 @@ export function zoomInitial(){
             let r = Math.round(currentRatio*100) + "%";
             $("#luckysheet-zoom-ratioText").html(r);
             $("#luckysheet-zoom-cursor").css("left", pos-4);
+            // REVISE 放大缩小栏设置process条
+            $(".luckysheet-zoom-line-process").css("width", pos-4);
         });
 
         $(document).off("mouseup.zoomCursor").on("mouseup.zoomCursor",function(event){
@@ -273,6 +275,8 @@ function zoomSlierDomBind(ratio){
         domPos = Math.round((ratio - 1)*100 / 0.6)/10+50;
     }
     $("#luckysheet-zoom-cursor").css("left", domPos-4);
+    // REVISE 放大缩小栏设置process条
+    $(".luckysheet-zoom-line-process").css("width", domPos-4);
 }
 
 export function zoomNumberDomBind(ratio){

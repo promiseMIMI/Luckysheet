@@ -29,7 +29,7 @@
     font-size: 12px;
     font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
     border: 1px solid #e5e5e5;
-    background: #fff;
+    /* background: #fff; */
 }
 
 .luckysheet * {
@@ -201,6 +201,7 @@
 }
 
 .luckysheet-wa-editor {
+    display: flex;
     height: 32px;
     /* background: #f7f7f7; */
     background: #fafafc;
@@ -290,7 +291,7 @@
     border-width: 1px;
     outline: none;
     padding: 0;
-    color: #333;
+    color: #fff;
     list-style: none;
     font-size: 11px;
     font-weight: bold;
@@ -430,12 +431,12 @@
 }
 
 .luckysheet-color-menu-button-indicator .text-color-bar{
-    position: absolute;
+    /* position: absolute;
     bottom: 0px;
     background-color: #0081f9;
     height: 3px;
     width: 55%;
-    left: 30%;
+    left: 30%; */
 }
 
 .luckysheet-toolbar-button-inner-box .luckysheet-icon,
@@ -1024,7 +1025,7 @@
     left: 0;
     right: 0px;
     overflow: hidden;
-    background: #00ffff;
+    /* background: #00ffff; */
 }
 
 .luckysheet-sheet-area {
@@ -1278,7 +1279,7 @@ div.luckysheet-sheets-m:hover {
     bottom: 27px;
     left: 0;
     min-width: 200px;
-    background-color: #FFFFFF !important;
+    /* background-color: #FFFFFF !important; */
     overflow: hidden;
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
@@ -1636,10 +1637,10 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
 
 .luckysheet-cell-main {
     /*border: solid 1px #BEC1C4;*/
-    background-color: white;
+    /* background-color: white; */
     width: 15px;
     height: 15px;
-    background-color: #F3F3F2;
+    /* background-color: #F3F3F2; */
     /*#E7E7E7;*/
     border-collapse: collapse;
     position: relative;
@@ -7356,4 +7357,43 @@ fieldset[disabled] .btn-danger.focus {
 #luckysheet-icon-redo.disabled {
     cursor: default;
     opacity: .4;
+}
+
+#luckysheet-icon-exit-fullscreen {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+}
+
+#luckysheet-icon-exit-fullscreen.luckysheet-toolbar-menu-button:hover {
+    background-color: transparent;
+}
+
+.tool-tips {
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+}
+
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.unfold-tools-split-line{
+    width: 1px;
+    height: 50px;
+    background: rgba(255,255,255,0.1000);
+    border-radius: 1px;
+}
+
+.unfold-bar-item {
+    text-align: center;
+}
+
+#luckysheet-wa-editor > div.unfold-tools-split-line:nth-last-child(2) {
+    margin-left: auto;
+}
+.luckysheet-toolbar-button, .luckysheet-toolbar-menu-button {
+    vertical-align: baseline;
 }

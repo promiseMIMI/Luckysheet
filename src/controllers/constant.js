@@ -35,7 +35,7 @@ const gridHTML = function(){
                             </div>` : ''}
                             
                         </div> 
-                        <div id="luckysheet-wa-editor" class="luckysheet-wa-editor toolbar"> \${menu} </div> 
+                        <div id="luckysheet-wa-editor" class="luckysheet-wa-editor toolbar" ${Store.toolbarUnfold?'style="height: 64px;"':""} > \${menu} </div> 
                         <div id="luckysheet-wa-calculate" class="luckysheet-wa-calculate"> 
                             <div class="luckysheet-wa-calculate-size" id="luckysheet-wa-calculate-size"></div> 
                             <div class="luckysheet-wa-calculate-help"> 
@@ -235,15 +235,16 @@ const gridHTML = function(){
                             <div class="luckysheet-sta-c">
                                 <div class="luckysheet-zoom-content" id="luckysheet-zoom-content">
                                     <div class="luckysheet-zoom-minus" id="luckysheet-zoom-minus">
-                                        <div class="luckysheet-zoom-minus-icon"></div>
+                                        <div class="newfont ly-minus"></div>
                                     </div>
                                     <div class="luckysheet-zoom-slider" id="luckysheet-zoom-slider">
                                         <div class="luckysheet-zoom-line"></div>
+                                        <div class="luckysheet-zoom-line-process"></div>
                                         <div class="luckysheet-zoom-cursor" id="luckysheet-zoom-cursor"></div>
                                         <div class="luckysheet-zoom-hundred"></div>
                                     </div>
                                     <div class="luckysheet-zoom-plus" id="luckysheet-zoom-plus">
-                                        <div class="luckysheet-zoom-plus-icon"></div>
+                                        <div class="newfont ly-plus"></div>
                                     </div>
                                     <div class="luckysheet-zoom-ratioText" id="luckysheet-zoom-ratioText">100%</div>
                                 </div>
@@ -1030,12 +1031,15 @@ const keycode = {
     SCROLLLOCK: 145
 };
 
+// REVISE Canvas表格默认颜色
 const luckysheetdefaultstyle = {
     fillStyle: "#000000",
     textBaseline: "middle",
-    strokeStyle: "#dfdfdf",
+    strokeStyle: "#2B2C31", // 表格颜色
     rowFillStyle: "#5e5e5e",
-    textAlign: 'center'
+    textAlign: 'center',
+    fillHeaderStyle: '#ffffff', // 表头索引栏字体颜色
+    fillContentStyle: 'transparent',
 }
 
 const luckysheetdefaultFont = function(){
@@ -1059,17 +1063,17 @@ const iconfontObjects = {
         'border-vertical': ' iconfont luckysheet-iconfont-neikuangshuxian',
     },
     align:{
-        'left': ' iconfont luckysheet-iconfont-wenbenzuoduiqi',
-        'center': ' iconfont luckysheet-iconfont-wenbenjuzhongduiqi',
-        'right': ' iconfont luckysheet-iconfont-wenbenyouduiqi',
-        'top': ' iconfont luckysheet-iconfont-dingbuduiqi',
-        'middle': ' iconfont luckysheet-iconfont-shuipingduiqi',
-        'bottom': ' iconfont luckysheet-iconfont-dibuduiqi',
+        'left': ' newfont ly-zuoduiqi',
+        'center': ' newfont ly-juzhongduiqi',
+        'right': ' newfont ly-youduiqi',
+        'top': ' newfont ly-a-dingduanduiqi',
+        'middle': ' newfont ly-zhongbuduiqi',
+        'bottom': ' newfont ly-diduanduiqi',
     },
     textWrap:{
-        'overflow': ' iconfont luckysheet-iconfont-yichu1',
-        'wrap': ' iconfont luckysheet-iconfont-zidonghuanhang',
-        'clip': ' iconfont luckysheet-iconfont-jieduan',
+        'overflow': ' newfont ly-yichu',
+        'wrap': ' newfont ly-zidonghuanhang',
+        'clip': ' newfont ly-jieduan',
     },
     rotation:{
         'none': ' iconfont luckysheet-iconfont-wuxuanzhuang',

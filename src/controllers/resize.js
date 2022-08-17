@@ -448,17 +448,17 @@ export function menuToolBarWidth() {
 
         if(index !== toobarElements.length - 1){
             if(curr.ele instanceof Array){
-                toobarWidths.push($(curr.ele[0]).offset().left);
+                toobarWidths.push($(curr.ele[0])?.offset()?.left);
             }else{
-                toobarWidths.push($(curr.ele).offset().left);
+                toobarWidths.push($(curr.ele)?.offset()?.left);
             }
         }else{
             if(curr.ele instanceof Array){
-                toobarWidths.push($(curr.ele[0]).offset().left);
-                toobarWidths.push($(curr.ele[0]).offset().left + $(curr.ele[0]).outerWidth() + 5);
+                toobarWidths.push($(curr.ele[0])?.offset()?.left);
+                toobarWidths.push($(curr.ele[0])?.offset()?.left + $(curr.ele[0]).outerWidth() + 5);
             }else{
-                toobarWidths.push($(curr.ele).offset().left);
-                toobarWidths.push($(curr.ele).offset().left + $(curr.ele).outerWidth() + 5);
+                toobarWidths.push($(curr.ele)?.offset()?.left);
+                toobarWidths.push($(curr.ele)?.offset()?.left + $(curr.ele).outerWidth() + 5);
             }
         }
 

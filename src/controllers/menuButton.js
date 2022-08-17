@@ -575,7 +575,7 @@ const menuButton = {
             let d = editor.deepCopyFlowData(Store.flowdata);
             let color =  $(this).attr("color");
             if(color == null){
-                color = "#000000";
+                color = luckysheetConfigsetting.defaultTextColor || "#000000";
             }
             _this.updateFormat(d, "fc", color);
         });
@@ -603,7 +603,8 @@ const menuButton = {
 
                 $("body").first().append(menu);
                 $menuButton = $("#" + menuButtonId);
-
+                // REVISE 字体颜色默认选择框初始化
+                console.log(luckysheetConfigsetting.defaultTextColor, 'luckysheetConfigsetting.defaultTextColor')
                 $("#" + menuButtonId).find(".luckysheet-color-selected").spectrum({
                     showPalette: true,
                     showPaletteOnly: true,
@@ -639,13 +640,13 @@ const menuButton = {
                             color = color.toHexString();
                         }
                         else {
-                            color = "#000";
+                            color = luckysheetConfigsetting.defaultTextColor || "#000";
                         }
 
                         let oldcolor = null;
                         // $("#luckysheet-icon-text-color .luckysheet-color-menu-button-indicator").css("border-bottom-color", color);
                         // 下边框换成了一个DIV
-                        $("#luckysheet-icon-text-color .text-color-bar").css("background-color", color);
+                        $("#luckysheet-icon-text-color .text-color-bar").css("color", color);
                         $("#luckysheet-icon-text-color").attr("color", color);
 
                         let d = editor.deepCopyFlowData(Store.flowdata);
@@ -696,6 +697,9 @@ const menuButton = {
                     alternateformat.init();
                     alternateformat.perfect();
                 });
+
+                // REVISE 改变取色器初始选中颜色值
+                $("#" + menuButtonId).find(".luckysheet-color-selected").val(luckysheetConfigsetting.defaultTextColor || "#000");
             }
 
             let userlen = $(this).outerWidth();
@@ -719,7 +723,7 @@ const menuButton = {
             let d = editor.deepCopyFlowData(Store.flowdata);
             let color =  $(this).attr("color");
             if(color == null){
-                color = "#ffffff";
+                color = luckysheetConfigsetting.defaultCellColor || "#ffffff";
             }
             _this.updateFormat(d, "bg", color);
         });
@@ -741,7 +745,7 @@ const menuButton = {
                 
                 $("body").first().append(menu);
                 $menuButton = $("#" + menuButtonId);
-
+                // REVISE 背景颜色默认选择框初始化
                 $("#" + menuButtonId).find(".luckysheet-color-selected").spectrum({
                     showPalette: true,
                     showPaletteOnly: true,
@@ -779,13 +783,13 @@ const menuButton = {
                             color = color.toHexString();
                         }
                         else {
-                            color = "#fff";
+                            color = luckysheetConfigsetting.defaultCellColor || "#fff";
                         }
 
                         let oldcolor = null;
                         // $("#luckysheet-icon-cell-color .luckysheet-color-menu-button-indicator").css("border-bottom-color", color);
                         // 下边框换成了一个DIV
-                        $("#luckysheet-icon-cell-color .text-color-bar").css("background-color", color);
+                        $("#luckysheet-icon-cell-color .text-color-bar").css("color", color);
                         
                         $("#luckysheet-icon-cell-color").attr("color", color);
                         let d = editor.deepCopyFlowData(Store.flowdata);
@@ -842,7 +846,7 @@ const menuButton = {
                     alternateformat.perfect();
                 });
 
-                $("#" + menuButtonId).find(".luckysheet-color-selected").val("#fff");
+                $("#" + menuButtonId).find(".luckysheet-color-selected").val(luckysheetConfigsetting.defaultCellColor || "#fff");
             }
 
             let userlen = $(this).outerWidth();
@@ -1419,9 +1423,9 @@ const menuButton = {
                 const _locale = locale();
                 const locale_align = _locale.align;
                 let itemdata = [
-                    {"text": locale_align.left, "value": "left", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-align-left iconfont luckysheet-iconfont-wenbenzuoduiqi" style="user-select: none;"> </div> </div>'},
-                    {"text": locale_align.center, "value": "center", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-align-center iconfont luckysheet-iconfont-wenbenjuzhongduiqi" style="user-select: none;"> </div> </div>'},
-                    {"text": locale_align.right, "value": "right", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-align-right iconfont luckysheet-iconfont-wenbenyouduiqi" style="user-select: none;"> </div> </div>'}
+                    {"text": locale_align.left, "value": "left", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-align-left newfont ly-zuoduiqi" style="user-select: none;"> </div> </div>'},
+                    {"text": locale_align.center, "value": "center", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-align-center newfont ly-juzhongduiqi" style="user-select: none;"> </div> </div>'},
+                    {"text": locale_align.right, "value": "right", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-align-right newfont ly-youduiqi" style="user-select: none;"> </div> </div>'}
                 ];
 
                 // itemvalue to iconfont
@@ -1432,7 +1436,7 @@ const menuButton = {
                 let menu = replaceHtml(_this.menu, { "id": "align-menu", "item": itemset, "subclass": "", "sub": "" });
 
                 $("body").first().append(menu);
-                $menuButton = $("#" + menuButtonId).width(120);
+                $menuButton = $("#" + menuButtonId).width(140);
                 _this.focus($menuButton);
 
                 $menuButton.find(".luckysheet-cols-menuitem").click(function(){
@@ -1462,6 +1466,12 @@ const menuButton = {
             mouseclickposition($menuButton, menuleft - 28, $(this).offset().top + 25, "lefttop");
         });
 
+        // SHK toolbar 改造 菜单展开
+        $(".shk-horizontal-align-mode .luckysheet-cols-menuitem").click(function(){
+            let $t = $(this), itemvalue = $t.attr("itemvalue");
+            let d = editor.deepCopyFlowData(Store.flowdata);
+            _this.updateFormat(d, "ht", itemvalue);
+        });
         //垂直对齐
         $("#luckysheet-icon-valign").click(function(){
         	let itemvalue = $("#luckysheet-icon-valign").attr("type");
@@ -1473,6 +1483,12 @@ const menuButton = {
             _this.updateFormat(d, "vt", itemvalue);
         });
 
+        // SHK toolbar 改造 菜单展开
+        $(".shk-vertical-align-mode .luckysheet-cols-menuitem").click(function(){
+            let $t = $(this), itemvalue = $t.attr("itemvalue");
+            let d = editor.deepCopyFlowData(Store.flowdata);
+            _this.updateFormat(d, "vt", itemvalue);
+        });
         $("#luckysheet-icon-valign-menu").click(function(){
             let menuButtonId = $(this).attr("id") + "-menuButton";
             let $menuButton = $("#" + menuButtonId);
@@ -1480,9 +1496,9 @@ const menuButton = {
             const locale_align = _locale.align;
             if($menuButton.length == 0){
                 let itemdata = [
-                    {"text": locale_align.top, "value": "top", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-valign-top iconfont luckysheet-iconfont-dingbuduiqi" style="user-select: none;"> </div> </div>'},
-                    {"text": locale_align.middle, "value": "middle", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-valign-middle iconfont luckysheet-iconfont-shuipingduiqi" style="user-select: none;"> </div> </div>'},
-                    {"text": locale_align.bottom, "value": "bottom", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-valign-bottom iconfont luckysheet-iconfont-dibuduiqi" style="user-select: none;"> </div> </div>'}
+                    {"text": locale_align.top, "value": "top", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-valign-top newfont ly-a-dingduanduiqi" style="user-select: none;"> </div> </div>'},
+                    {"text": locale_align.middle, "value": "middle", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-valign-middle newfont ly-zhongbuduiqi" style="user-select: none;"> </div> </div>'},
+                    {"text": locale_align.bottom, "value": "bottom", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-valign-bottom newfont ly-diduanduiqi" style="user-select: none;"> </div> </div>'}
                 ];
 
                 // itemvalue to iconfont
@@ -1493,7 +1509,7 @@ const menuButton = {
                 let menu = replaceHtml(_this.menu, { "id": "valign-menu", "item": itemset, "subclass": "", "sub": "" });
 
                 $("body").first().append(menu);
-                $menuButton = $("#" + menuButtonId).width(120);
+                $menuButton = $("#" + menuButtonId).width(140);
                 _this.focus($menuButton, "bottom");
 
                 $menuButton.find(".luckysheet-cols-menuitem").click(function(){
@@ -1523,6 +1539,12 @@ const menuButton = {
             mouseclickposition($menuButton, menuleft - 28, $(this).offset().top + 25, "lefttop");
         });
 
+        // SHK toolbar 改造 菜单展开
+        $(".shk-text-wrap-mode .luckysheet-cols-menuitem").click(function(){
+            let $t = $(this), itemvalue = $t.attr("itemvalue");
+            let d = editor.deepCopyFlowData(Store.flowdata);
+            _this.updateFormat(d, "tb", itemvalue);
+        });
         //文本换行
         $("#luckysheet-icon-textwrap-menu").click(function(){
             let menuButtonId = $(this).attr("id") + "-menuButton";
@@ -1532,9 +1554,9 @@ const menuButton = {
                 const _locale = locale();
                 const locale_textWrap = _locale.textWrap;
                 let itemdata = [
-                    {"text": locale_textWrap.overflow, "value": "overflow", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-textwrap-overflow iconfont luckysheet-iconfont-yichu1" style="user-select: none;"> </div> </div>'},
-                    {"text": locale_textWrap.wrap, "value": "wrap", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-textwrap-wrap iconfont luckysheet-iconfont-zidonghuanhang" style="user-select: none;"> </div> </div>'},
-                    {"text": locale_textWrap.clip, "value": "clip", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-textwrap-clip iconfont luckysheet-iconfont-jieduan" style="user-select: none;"> </div> </div>'}
+                    {"text": locale_textWrap.overflow, "value": "overflow", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-textwrap-overflow newfont ly-yichu" style="user-select: none;"> </div> </div>'},
+                    {"text": locale_textWrap.wrap, "value": "wrap", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-textwrap-wrap newfont ly-zidonghuanhang" style="user-select: none;"> </div> </div>'},
+                    {"text": locale_textWrap.clip, "value": "clip", "example": '<div class="luckysheet-icon luckysheet-inline-block" style="user-select: none;opacity:1;"> <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-textwrap-clip newfont ly-jieduan" style="user-select: none;"> </div> </div>'}
                 ];
 
                 // itemvalue to iconfont
@@ -1545,7 +1567,7 @@ const menuButton = {
                 let menu = replaceHtml(_this.menu, { "id": "textwrap-menu", "item": itemset, "subclass": "", "sub": "" });
 
                 $("body").first().append(menu);
-                $menuButton = $("#" + menuButtonId).width(120);
+                $menuButton = $("#" + menuButtonId).width(140);
                 _this.focus($menuButton, "clip");
 
                 $menuButton.find(".luckysheet-cols-menuitem").click(function(){
@@ -2901,6 +2923,51 @@ const menuButton = {
             let sheetFile = sheetmanage.getSheetByIndex();
             openProtectionModal(sheetFile);
         });
+        
+        //sheet 全屏
+        $("#luckysheet-icon-fullscreen").click(function(){
+            luckysheetConfigsetting.toolCallBacks.fullScreenCallBack()
+        });
+
+        //sheet 退出全屏
+        $("#luckysheet-icon-exit-fullscreen .btn-exit").click(function(){
+            luckysheetConfigsetting.toolCallBacks.exitFullScreenCallBack()
+        });
+        //sheet 菜单展开
+        $("#toolbar-unfold").click(function(e){
+            Store.toolbarUnfold = true
+            console.log(Store)
+            // const toolbarHtml = menuToolBar()
+            // $("#luckysheet-wa-editor").html(toolbarHtml).height('64px')
+            // setTimeout(() => {
+            //     luckysheetsizeauto()
+            //     menuButton.initialMenuButton()
+            // }, 1000)
+            luckysheetConfigsetting.toolCallBacks.cbUnfold(true)
+            e.stopPropagation()
+        });
+        //sheet 菜单收起
+        $("#toolbar-collapse").click(function(e){
+            Store.toolbarUnfold = false
+            // const toolbarHtml = menuToolBar()
+            // $("#luckysheet-wa-editor").html(toolbarHtml).height('41px')
+            // setTimeout(() => {
+            //     luckysheetsizeauto()
+            //     menuButton.initialMenuButton()
+            // }, 1000)
+            // luckysheetConfigsetting.toolCallBacks.exitFullScreenCallBack()
+            luckysheetConfigsetting.toolCallBacks.cbUnfold(false)
+            e.stopPropagation()
+        });
+
+        $("#luckysheet-icon-save-data").click(function() {
+            luckysheetConfigsetting.toolCallBacks.saveDataCallBack();
+        });
+
+        //sheet 清除格式
+        $("#luckysheet-icon-eraser").click(function(){
+            luckysheetConfigsetting.toolCallBacks.eraserCallBack()
+        });
 
         //print
         $("#luckysheet-icon-print").click(function(){
@@ -3553,12 +3620,17 @@ const menuButton = {
         else if(attr == "ht"){
             let $menuButton = $("#luckysheet-icon-align-menu-menuButton");
             let $t = $("luckysheet-icon-align"), itemvalue = "left";
+            $("#luckysheet-icon-horizontal-left, #luckysheet-icon-horizontal-center, #luckysheet-icon-horizontal-right").removeClass("luckysheet-toolbar-button-hover");
             
             if(foucsStatus == "0"){
                 itemvalue = "center";
+                $("#luckysheet-icon-horizontal-center").addClass("luckysheet-toolbar-button-hover");
             }
             else if(foucsStatus == "2"){
                 itemvalue = "right";
+                $("#luckysheet-icon-horizontal-right").addClass("luckysheet-toolbar-button-hover");
+            } else {
+                $("#luckysheet-icon-horizontal-left").addClass("luckysheet-toolbar-button-hover");
             }
 
             _this.focus($menuButton, itemvalue);
@@ -3571,14 +3643,20 @@ const menuButton = {
             $menuButton.hide();
         }
         else if(attr == "vt"){
+            // SHK toolbar 改造 菜单展开
             let $menuButton = $("#luckysheet-icon-valign-menu-menuButton");
             let $t = $("luckysheet-icon-valign"), itemvalue = "bottom";
+            $("#luckysheet-icon-valign-top, #luckysheet-icon-valign-middle, #luckysheet-icon-valign-bottom").removeClass("luckysheet-toolbar-button-hover");
             
             if(foucsStatus == "1"){
                 itemvalue = "top";
+                $("#luckysheet-icon-valign-top").addClass("luckysheet-toolbar-button-hover");
             }
             else if(foucsStatus == "0"){
                 itemvalue = "middle";
+                $("#luckysheet-icon-valign-middle").addClass("luckysheet-toolbar-button-hover");
+            } else {
+                $("#luckysheet-icon-valign-bottom").addClass("luckysheet-toolbar-button-hover");
             }
 
             _this.focus($menuButton, itemvalue);
@@ -3593,12 +3671,17 @@ const menuButton = {
         else if(attr == "tb"){
             let $menuButton = $("#luckysheet-icon-textwrap-menu-menuButton");
             let $t = $("luckysheet-icon-textwrap"), itemvalue = "clip";
-            
+            $("#luckysheet-icon-textwrap-overflow, #luckysheet-icon-textwrap-wrap, #luckysheet-icon-textwrap-clip").removeClass("luckysheet-toolbar-button-hover");
+
             if(foucsStatus == "1"){
                 itemvalue = "overflow";
+                $("#luckysheet-icon-textwrap-overflow").addClass("luckysheet-toolbar-button-hover");
             }
             else if(foucsStatus == "2"){
                 itemvalue = "wrap";
+                $("#luckysheet-icon-textwrap-wrap").addClass("luckysheet-toolbar-button-hover");
+            } else {
+                $("#luckysheet-icon-textwrap-clip").addClass("luckysheet-toolbar-button-hover");
             }
 
             _this.focus($menuButton, itemvalue);

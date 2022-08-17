@@ -81,6 +81,14 @@ luckysheet.create = function (setting) {
     Store.limitSheetNameLength =  extendsetting.limitSheetNameLength;
     Store.defaultSheetNameMaxLength = extendsetting.defaultSheetNameMaxLength;
     Store.fontList = extendsetting.fontList;
+    /**
+     * 新增滚动条属性
+     */
+    Store.ch_width = extendsetting.ch_width;
+    Store.rh_height = extendsetting.rh_height;
+    Store.cellMainSrollBarSize = extendsetting.cellMainSrollBarSize;
+    Store.toolbarUnfold = extendsetting.toolbarUnfold; // 工具栏展开
+    
     server.gridKey = extendsetting.gridKey;
     server.loadUrl = extendsetting.loadUrl;
     server.updateUrl = extendsetting.updateUrl;
@@ -97,6 +105,9 @@ luckysheet.create = function (setting) {
     luckysheetConfigsetting.allowCopy = extendsetting.allowCopy;
     luckysheetConfigsetting.showtoolbar = extendsetting.showtoolbar;
     luckysheetConfigsetting.showtoolbarConfig = extendsetting.showtoolbarConfig;
+
+    luckysheetConfigsetting.toolCallBacks = extendsetting.toolCallBacks;
+
     luckysheetConfigsetting.showinfobar = extendsetting.showinfobar;
     luckysheetConfigsetting.showsheetbar = extendsetting.showsheetbar;
     luckysheetConfigsetting.showsheetbarConfig = extendsetting.showsheetbarConfig;
@@ -137,6 +148,9 @@ luckysheet.create = function (setting) {
 
     luckysheetConfigsetting.defaultColWidth = extendsetting.defaultColWidth;
     luckysheetConfigsetting.defaultRowHeight = extendsetting.defaultRowHeight;
+    
+    luckysheetConfigsetting.defaultTextColor = extendsetting.defaultTextColor;
+    luckysheetConfigsetting.defaultCellColor = extendsetting.defaultCellColor;
 
     luckysheetConfigsetting.title = extendsetting.title;
     luckysheetConfigsetting.container = extendsetting.container;

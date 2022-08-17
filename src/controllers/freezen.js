@@ -56,14 +56,11 @@ const luckysheetFreezen = {
                 <div class="luckysheet-toolbar-button-inner-box luckysheet-inline-block"
                 style="user-select: none;">
                     <div class="luckysheet-icon luckysheet-inline-block " style="user-select: none;">
-                        <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-function iconfont luckysheet-iconfont-dongjie1"
+                        <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-function newfont ly-donjiediyihang"
                         style="user-select: none;">
                         </div>
                     </div>
-                    <div class="luckysheet-toolbar-menu-button-caption luckysheet-inline-block"
-                    style="user-select: none;">
-                        ${locale_freezen.default}
-                    </div>
+                    
                 </div>
             </div>
         `
@@ -158,7 +155,7 @@ const luckysheetFreezen = {
 
         _this.freezenverticaldata = freezenverticaldata;
 
-        // $("#luckysheet-freezen-btn-horizontal").html('<i class="luckysheet-icon-img-container iconfont luckysheet-iconfont-dongjie1"></i> '+locale().freezen.freezenCancel);
+        // $("#luckysheet-freezen-btn-horizontal").html('<i class="luckysheet-icon-img-container newfont ly-donjiediyihang"></i> '+locale().freezen.freezenCancel);
 
         // 解决freeze 不垂直居中的问题
         const freezeHTML = `
@@ -167,14 +164,11 @@ const luckysheetFreezen = {
                 <div class="luckysheet-toolbar-button-inner-box luckysheet-inline-block"
                 style="user-select: none;">
                     <div class="luckysheet-icon luckysheet-inline-block " style="user-select: none;">
-                        <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-function iconfont luckysheet-iconfont-dongjie1"
+                        <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-function newfont ly-donjiediyihang"
                         style="user-select: none;">
                         </div>
                     </div>
-                    <div class="luckysheet-toolbar-menu-button-caption luckysheet-inline-block"
-                    style="user-select: none;">
-                        ${locale().freezen.freezenCancel}
-                    </div>
+                    
                 </div>
             </div>
         `
@@ -332,7 +326,7 @@ const luckysheetFreezen = {
     cancelFreezenHorizontal: function (sheetIndex) {
         let _this = this;
 
-        // $("#luckysheet-freezen-btn-horizontal").html('<i class="luckysheet-icon-img-container iconfont luckysheet-iconfont-dongjie1"></i> '+locale().freezen.default);
+        // $("#luckysheet-freezen-btn-horizontal").html('<i class="luckysheet-icon-img-container newfont ly-donjiediyihang"></i> '+locale().freezen.default);
 
         // 解决freeze 不垂直居中的问题
         const freezeHTML = `
@@ -341,14 +335,11 @@ const luckysheetFreezen = {
                 <div class="luckysheet-toolbar-button-inner-box luckysheet-inline-block"
                 style="user-select: none;">
                     <div class="luckysheet-icon luckysheet-inline-block " style="user-select: none;">
-                        <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-function iconfont luckysheet-iconfont-dongjie1"
+                        <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-function newfont ly-donjiediyihang"
                         style="user-select: none;">
                         </div>
                     </div>
-                    <div class="luckysheet-toolbar-menu-button-caption luckysheet-inline-block"
-                    style="user-select: none;">
-                        ${locale().freezen.default}
-                    </div>
+                    
                 </div>
             </div>
         `
@@ -450,7 +441,7 @@ const luckysheetFreezen = {
 
         // $("#luckysheet-freezen-btn-horizontal").html('<i class="fa fa-list-alt"></i> '+locale().freezen.freezenCancel);
 
-        // $("#luckysheet-freezen-btn-horizontal").html('<i class="luckysheet-icon-img-container iconfont luckysheet-iconfont-dongjie1"></i> '+locale().freezen.freezenCancel);
+        // $("#luckysheet-freezen-btn-horizontal").html('<i class="luckysheet-icon-img-container newfont ly-donjiediyihang"></i> '+locale().freezen.freezenCancel);
 
         const freezeHTML = `
             <div class="luckysheet-toolbar-button-outer-box luckysheet-inline-block"
@@ -458,14 +449,11 @@ const luckysheetFreezen = {
                 <div class="luckysheet-toolbar-button-inner-box luckysheet-inline-block"
                 style="user-select: none;">
                     <div class="luckysheet-icon luckysheet-inline-block " style="user-select: none;">
-                        <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-function iconfont luckysheet-iconfont-dongjie1"
+                        <div aria-hidden="true" class="luckysheet-icon-img-container luckysheet-icon-img luckysheet-icon-function newfont ly-donjiediyihang"
                         style="user-select: none;">
                         </div>
                     </div>
-                    <div class="luckysheet-toolbar-menu-button-caption luckysheet-inline-block"
-                    style="user-select: none;">
-                        ${locale().freezen.freezenCancel}
-                    </div>
+                   
                 </div>
             </div>
         `

@@ -164,7 +164,8 @@ const Store = {
         vt: 1,
         m: '',
         v: ''
-    }
+    },
+    toolbarUnfold: false,
 
 }
 

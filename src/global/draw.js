@@ -95,14 +95,14 @@ function luckysheetDrawgridRowTitle(scrollHeight, drawHeight, offsetTop) {
 
         }
         else {
-            luckysheetTableContent.fillStyle = "#ffffff";
+            luckysheetTableContent.fillStyle = luckysheetdefaultstyle.fillContentStyle;
             luckysheetTableContent.fillRect(
                 0,
                 (start_r + offsetTop + firstOffset) , 
                 Store.rowHeaderWidth -1,
                 (end_r - start_r + 1+lastOffset-firstOffset) 
             )
-            luckysheetTableContent.fillStyle = "#000000";
+            luckysheetTableContent.fillStyle = luckysheetdefaultstyle.fillHeaderStyle;
 
             //行标题栏序列号
             luckysheetTableContent.save();//save scale before draw text
@@ -293,14 +293,14 @@ function luckysheetDrawgridColumnTitle(scrollWidth, drawWidth, offsetLeft) {
 
         }
         else {
-            luckysheetTableContent.fillStyle = "#ffffff";
+            luckysheetTableContent.fillStyle = luckysheetdefaultstyle.fillContentStyle;
             luckysheetTableContent.fillRect(
                 (start_c + offsetLeft - 1) , 
                 0, 
                 (end_c - start_c) ,
                 Store.columnHeaderHeight -1
             )
-            luckysheetTableContent.fillStyle = "#000000";
+            luckysheetTableContent.fillStyle = luckysheetdefaultstyle.fillHeaderStyle;
 
             //列标题栏序列号
             luckysheetTableContent.save();//save scale before draw text
@@ -554,7 +554,7 @@ function luckysheetDrawMain(scrollWidth, scrollHeight, drawWidth, drawHeight, of
     fill_col_ed = Store.visibledatacolumn[dataset_col_ed];
 
     //表格canvas 初始化处理
-    luckysheetTableContent.fillStyle = "#ffffff";
+    luckysheetTableContent.fillStyle = luckysheetdefaultstyle.fillContentStyle;
     luckysheetTableContent.fillRect(
         (offsetLeft - 1) , 
         (offsetTop - 1) , 
@@ -1149,7 +1149,7 @@ let nullCellRender = function(r, c, start_r, start_c, end_r, end_c,luckysheetTab
     }
 
     if(fillStyle==null){
-        luckysheetTableContent.fillStyle = "#FFFFFF";
+        luckysheetTableContent.fillStyle = luckysheetdefaultstyle.fillContentStyle;
     }
     else{
         luckysheetTableContent.fillStyle = fillStyle;
@@ -1305,7 +1305,7 @@ let cellRender = function(r, c, start_r, start_c, end_r, end_c, value, luckyshee
     }
     // luckysheetTableContent.textBaseline = 'top';
     if(fillStyle==null){
-        luckysheetTableContent.fillStyle = "#FFFFFF";
+        luckysheetTableContent.fillStyle = luckysheetdefaultstyle.fillContentStyle;
     }
     else{
         luckysheetTableContent.fillStyle = fillStyle;
@@ -1333,8 +1333,8 @@ let cellRender = function(r, c, start_r, start_c, end_r, end_c, value, luckyshee
         "end_c": cellsize[2] + cellsize[0]
     }, sheetmanage.getSheetByIndex(),luckysheetTableContent)){ return; }
 
-
-    luckysheetTableContent.fillRect(cellsize[0], cellsize[1], cellsize[2], cellsize[3]);
+    // REVISE 背景色超出单元格问题
+    luckysheetTableContent.fillRect(cellsize[0], cellsize[1], cellsize[2], cellsize[3] - 2);
 
     let dataVerification = dataVerificationCtrl.dataVerification;
 
@@ -1522,7 +1522,7 @@ let cellRender = function(r, c, start_r, start_c, end_r, end_c, value, luckyshee
                         x + w * minusLen, 
                         y
                     );
-                    my_gradient.addColorStop(0, "#ffffff");
+                    my_gradient.addColorStop(0, luckysheetdefaultstyle.fillContentStyle);
                     my_gradient.addColorStop(1, "#ff0000");
 
                     luckysheetTableContent.fillStyle = my_gradient;

@@ -3793,7 +3793,7 @@ const conditionformat = {
                 "cellrange": cellrange,
                 "format": format
             };
-            ruleArr = Store.luckysheetfile[index]["luckysheet_conditionformat_save"] == null ? [] : Store.luckysheetfile[index]["luckysheet_conditionformat_save"];
+            ruleArr = Store.luckysheetfile[index]["luckysheet_conditionformat_save"] ? [] : Store.luckysheetfile[index]["luckysheet_conditionformat_save"];
             ruleArr.push(rule);
         }
 
