@@ -52,6 +52,7 @@ const imageCtrl = {
     cropChangeObj: null,
     copyImgItemObj: null,
     insertImg: function (file) {
+      if(!Store.allowEdit) return // 禁止编辑模式下限制图片选中以及拖拽
         const uploadImage = Store.toJsonOptions && Store.toJsonOptions['uploadImage'];
         if (typeof uploadImage === 'function') {
             // 上传形式
@@ -364,7 +365,7 @@ const imageCtrl = {
         //image active
         $("#luckysheet-image-showBoxs").off("mousedown.active").on("mousedown.active", ".luckysheet-modal-dialog-image", function(e) {
             
-
+            if(!Store.allowEdit) return // 禁止编辑模式下限制图片选中以及拖拽
             if(!checkProtectionAuthorityNormal(Store.currentSheetIndex, "editObjects",false)){
                 return;
             }

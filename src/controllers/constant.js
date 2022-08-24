@@ -850,7 +850,7 @@ function customLoadingConfig() {
         },
         text: info.loading,
         viewBox: "32 32 64 64", // 只有为path时，才会使用
-        imageClass: '',
+        imageClass: 'luckysheetLoaderGif',
         textClass: '',
         customClass: ''
     }
@@ -909,14 +909,20 @@ const luckysheetlodingHTML = function (target, coverConfig) {
     }
     const imageHtml = luckysheetloadingImage(config);
     const id = "luckysheet-loading-" + uuid.v4();
+    // const loadingHtml = `
+    //     <div class="luckysheet-loading-content"> 
+    //         <div class="${config.imageClass} luckysheet-loading-image">
+    //             ${imageHtml}
+    //         </div>
+    //         <div class="${config.textClass} luckysheet-loading-text">
+    //         <span>${config.text}</span>
+    //         </div>    
+    //     </div>`;
     const loadingHtml = `
         <div class="luckysheet-loading-content"> 
             <div class="${config.imageClass} luckysheet-loading-image">
                 ${imageHtml}
             </div>
-            <div class="${config.textClass} luckysheet-loading-text">
-            <span>${config.text}</span>
-            </div>    
         </div>`;
     const loading = document.createElement("div");
     loading.id = id;

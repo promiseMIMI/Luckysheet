@@ -65,7 +65,7 @@
     left: 0;
     width:100%;
     height:100%;
-    background:#fff;
+    background: #303034;
 }
 
 .luckysheet-loading-content{
@@ -74,7 +74,7 @@
     transform: translateY(-50%);
     width:100%;
     font-size: 14px;
-    color: #409eff;
+    color: #DC573C;
     text-align:center;
 }
 

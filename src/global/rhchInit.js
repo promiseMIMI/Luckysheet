@@ -44,7 +44,8 @@ export default function rhchInit(rowheight, colwidth) {
         Store.visibledatacolumn = [];
         Store.ch_width = 0;
 
-        let maxColumnlen = 120;
+        // let maxColumnlen = 120;
+        let maxColumnlen = 0;
 
         for (let c = 0; c < colwidth; c++) {
             let firstcolumnlen = Store.defaultcollen;
