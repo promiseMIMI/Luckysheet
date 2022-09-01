@@ -101,13 +101,14 @@ export function luckysheetupdateCell(row_index1, col_index1, d, cover, isnotfocu
     }
 
     $("#luckysheet-input-box").removeAttr("style").css({ 
-        "background-color": "rgb(255, 255, 255)", 
+        "background-color": "#1E1E20", 
         "padding": "0px 2px", 
         "font-size": `${Store.defaultFontSize}pt`,
         "right": "auto", 
         "overflow-y": "auto",
         "box-sizing": "initial",
         "display":"flex",
+        "color": "#fff",
     });
 
     if(luckysheetFreezen.freezenverticaldata != null || luckysheetFreezen.freezenhorizontaldata != null){

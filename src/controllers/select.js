@@ -27,6 +27,7 @@ function seletedHighlistByindex(id, r1, r2, c1, c2) {
 
 //Set selection highlight
 function selectHightlightShow(isRestore = false) {
+  if(!Store.allowEdit) return
     $("#luckysheet-cell-selected-boxs").show();
     $("#luckysheet-cell-selected-boxs #luckysheet-cell-selected").siblings(".luckysheet-cell-selected").remove();
 

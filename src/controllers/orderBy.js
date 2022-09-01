@@ -254,6 +254,7 @@ export function orderByInitial(){
         let scrollLeft = $(document).scrollLeft(), scrollTop = $(document).scrollTop();
 
         $("#luckysheet-sort-dialog-tablec").css("max-height", (winh - myh) / 2);
+        $("#luckysheet-sort-dialog-tablec").css("min-height", 64);
         $("#luckysheet-sort-dialog").css({ "left": (winw + scrollLeft - myw) / 2, "top": (winh + scrollTop - myh) / 2 }).show();
         $("#luckysheet-modal-dialog-mask").show();
 

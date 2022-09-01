@@ -52,23 +52,23 @@ const luckysheetLocationCell = {
                             '<div class="subbox">'+
                                 '<div class="subItem">'+
                                     '<input type="checkbox" checked="checked" class="date" id="locationFormulaDate" disabled="true">'+
-                                    '<label for="locationFormulaDate" style="color: #666">'+locale_location.locationDate+'</label>'+
+                                    '<label for="locationFormulaDate" style="#fff">'+locale_location.locationDate+'</label>'+
                                 '</div>'+
                                 '<div class="subItem">'+
                                     '<input type="checkbox" checked="checked" class="number" id="locationFormulaNumber" disabled="true">'+
-                                    '<label for="locationFormulaNumber" style="color: #666">'+locale_location.locationDigital+'</label>'+
+                                    '<label for="locationFormulaNumber" style="#fff">'+locale_location.locationDigital+'</label>'+
                                 '</div>'+
                                 '<div class="subItem">'+
                                     '<input type="checkbox" checked="checked" class="string" id="locationFormulaString" disabled="true">'+
-                                    '<label for="locationFormulaString" style="color: #666">'+locale_location.locationString+'</label>'+
+                                    '<label for="locationFormulaString" style="#fff">'+locale_location.locationString+'</label>'+
                                 '</div>'+
                                 '<div class="subItem">'+
                                     '<input type="checkbox" checked="checked" class="boolean" id="locationFormulaBoolean" disabled="true">'+
-                                    '<label for="locationFormulaBoolean" style="color: #666">'+locale_location.locationBool+'</label>'+
+                                    '<label for="locationFormulaBoolean" style="#fff">'+locale_location.locationBool+'</label>'+
                                 '</div>'+
                                 '<div class="subItem">'+
                                     '<input type="checkbox" checked="checked" class="error" id="locationFormulaError" disabled="true">'+
-                                    '<label for="locationFormulaError" style="color: #666">'+locale_location.locationError+'</label>'+
+                                    '<label for="locationFormulaError" style="#fff">'+locale_location.locationError+'</label>'+
                                 '</div>'+
                             '</div>'+
                         '</div>'+

@@ -44,10 +44,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    -ms-transform: translate(-50%, -100%);
-    -moz-transform: translate(-50%, -100%);
-    -o-transform: translate(-50%, -100%);
-    transform: translate(-50%, -100%);
+    -ms-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 
     background-image: url(loading.gif);
     background-repeat: no-repeat;
@@ -120,6 +120,7 @@
     background: rgba(255, 255, 255, 1);
     box-shadow: 0px -1px 0px 0px rgba(230, 231, 232, 1);
     border-bottom: 1px solid #d4d4d4;
+    display: none !important;
 }
 
 .luckysheet_info_detail .sheet-name {
@@ -1673,7 +1674,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     width: 1px;
 }
 
-.luckysheet-scrollbar-ltr::-webkit-scrollbar-button {
+/* .luckysheet-scrollbar-ltr::-webkit-scrollbar-button {
     height: 0;
     width: 0
 }
@@ -1767,18 +1768,18 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
 
 .luckysheet-scrollbar-ltr::-webkit-scrollbar-button:vertical:decrement:active {
     background: no-repeat url("waffle_sprite.png") -776px -28px
-}
+} */
 
 .luckysheet-scrollbar-x {
     bottom: 0px;
-    left: 44px;
-    overflow-x: scroll;
+    /* left: 44px; */
+    overflow-x: auto;
 }
 
 .luckysheet-scrollbar-y {
     right: 0px;
     top: 0px;
-    overflow-y: scroll;
+    overflow-y: auto;
 
 }
 
@@ -2186,12 +2187,12 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     position: absolute;
     pointer-events: none;
     z-index: 15;
-    border: 1px solid blue;
+    border: 1px solid #5391ff;
     margin: -1px 0 0 -1px;
     display: none;
 }
 
-.luckysheet-scrollbars::-webkit-scrollbar-track {
+/* .luckysheet-scrollbars::-webkit-scrollbar-track {
     background-color: #FFFFFF;
     border: 1px solid #d9d9d9;
 }
@@ -2204,16 +2205,32 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
 .luckysheet-scrollbar-y::-webkit-scrollbar-track {
     border-top: none;
     border-bottom: none;
+} */
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-corner {
+  display: block;
+}
+
+scrollbar-corner {
+  display: block;
 }
 
 .luckysheet-scrollbars::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
-    background-color: #FFFFFF;
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
     /*border:0 none;*/
 }
 
-.luckysheet-scrollbars::-webkit-scrollbar-thumb {
+/* .luckysheet-scrollbars::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, .2);
     background-clip: padding-box;
     border: solid transparent;
@@ -2226,6 +2243,25 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     background-color: #969696;
     border: 1px solid #A0A0A0;
     border-radius: 12px;
+} */
+
+::-webkit-scrollbar-thumb {
+  background-color: #565657;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background-color: #565657;
+  border-radius: 2px;
+}
+scrollbar-thumb {
+  background-color: #565657;
+  border-radius: 2px;
+}
+
+scrollbar-thumb:horizontal {
+  background-color: #565657;
+  border-radius: 2px;
 }
 
 .luckysheet-grdusedrange {
@@ -2471,7 +2507,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
 
 .luckysheet-filter-menu .luckysheet-mousedown-filter-byvalue-btn span,
 .luckysheet-filter-menu .luckysheet-mousedown-pivotTableFilter-byvalue-btn span {
-    color: blue;
+    color: #5391ff;
     cursor: pointer;
     text-decoration: underline;
 }
@@ -2560,7 +2596,7 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
     right: -5px;
     font-size: 16px;
     padding-top: 0px;
-    color: blue;
+    color: #5391ff;
 }
 
 #luckysheet-filter-byvalue-select table,
@@ -4164,7 +4200,7 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 .luckysheet-chart-point-config-left-mid span {
-    color: blue;
+    color: #5391ff;
     cursor: pointer;
     text-decoration: underline;
     font-size: 12px
@@ -4401,7 +4437,7 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 .luckysheet-modal-dialog-slider-range>div:last-child {
-    color: blue;
+    color: #5391ff;
     cursor: pointer;
     float: left;
 }
@@ -4665,7 +4701,7 @@ fieldset[disabled] .btn-danger.focus {
 }
 
 #luckysheet-dialog-pivotTable-clearitem {
-    color: blue;
+    color: #5391ff;
     cursor: pointer;
     float: right;
     margin-right: 30px;
