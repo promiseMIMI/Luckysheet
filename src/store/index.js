@@ -166,7 +166,12 @@ const Store = {
         v: ''
     },
     toolbarUnfold: false,
-
+    bottomReserveHeight: 100,
+    bottomReserveWidth: 100,
+    borderItemColor: '#ffffff',
+    fontThemeColor: '#ffffff',
+    touchDirection: '',
+    enableMobileSingleScroll: true,
 }
 
 export default Store;

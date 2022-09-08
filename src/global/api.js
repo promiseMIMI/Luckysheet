@@ -6877,3 +6877,13 @@ export function checkTheStatusOfTheSelectedCells(type,status){
 
     return flag;
 }
+
+/**
+ * @description: 初始化表格滚动条原始位置 
+ * @return {*}
+ */
+export function initScrollbar() {
+  //回到顶部
+  $("#luckysheet-scrollbar-x").scrollLeft(0);
+  $("#luckysheet-scrollbar-y").scrollTop(0);
+}

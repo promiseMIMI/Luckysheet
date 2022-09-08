@@ -1773,14 +1773,20 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
 .luckysheet-scrollbar-x {
     bottom: 0px;
     /* left: 44px; */
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 
 .luckysheet-scrollbar-y {
     right: 0px;
     top: 0px;
-    overflow-y: auto;
+    overflow-y: hidden;
+}
 
+.luckysheet:hover .luckysheet-scrollbar-x {
+  overflow-x: auto;
+}
+.luckysheet:hover .luckysheet-scrollbar-y {
+  overflow-y: auto;
 }
 
 
@@ -3824,7 +3830,8 @@ fieldset[disabled] .btn-danger.focus {
     padding: 7px 9px;
     position: absolute;
     visibility: visible;
-    white-space: pre-wrap;
+    /* white-space: pre-wrap; */
+    white-space: nowrap;
     word-break: break-all;
     word-break: break-word;
 }

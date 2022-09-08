@@ -907,7 +907,6 @@ export function createToolbarHtml() {
             </div>
         </div>`, // 'save'
     };
-    console.log(Store.toolbarUnfold, "luckysheetConfigsetting.toolbarUnfold")
     if(Store.toolbarUnfold) return createUnfoldToolbarHtml(htmlMap)
     const showtoolbar = luckysheetConfigsetting.showtoolbar;
     const showtoolbarConfig = luckysheetConfigsetting.showtoolbarConfig;

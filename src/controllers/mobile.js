@@ -7,7 +7,7 @@ import Store from '../store';
 //设备是移动端
 export default function mobileinit(){
     //去除滚动条
-    Store.cellMainSrollBarSize = 0;
+    // Store.cellMainSrollBarSize = 0;
 
     //滑动滚动表格
     let luckysheet_touchmove_status = false,
@@ -15,16 +15,17 @@ export default function mobileinit(){
         luckysheet_touchhandle_status = false,
         _scrollTimer = null;
     $(document).on("touchstart", "#luckysheet-grid-window-1", function(event){
-        clearInterval(_scrollTimer);//clear timer
-        luckysheet_touchmove_status = true;
+      if(Store.touchDirection) Store.touchDirection = ''
+      clearInterval(_scrollTimer);//clear timer
+      luckysheet_touchmove_status = true;
 
-        let touch = event.originalEvent.targetTouches[0];
-        luckysheet_touchmove_startPos = {
-            x: touch.pageX,
-            y: touch.pageY,
-            vy:0, //vy可以理解为滑动的力度
-            moveType:"y",
-        }
+      let touch = event.originalEvent.targetTouches[0];
+      luckysheet_touchmove_startPos = {
+          x: touch.pageX,
+          y: touch.pageY,
+          vy:0, //vy可以理解为滑动的力度
+          moveType:"y",
+      }
     })
     $(document).on("touchmove", "#luckysheet-grid-window-1", function(event){
         if(event.originalEvent.targetTouches.length > 1 || (event.scale && event.scale !== 1)){
@@ -36,6 +37,10 @@ export default function mobileinit(){
         if(luckysheet_touchmove_status){//滚动
             let slideX = touch.pageX - luckysheet_touchmove_startPos.x;
             let slideY = touch.pageY - luckysheet_touchmove_startPos.y;
+
+            if(!Store.touchDirection && Store.enableMobileSingleScroll) {
+              Store.touchDirection = Math.abs(slideX) - Math.abs(slideY) > 0 ? 'x' : 'y'
+            }
 
             luckysheet_touchmove_startPos.x = touch.pageX;
             luckysheet_touchmove_startPos.y = touch.pageY;
@@ -58,18 +63,17 @@ export default function mobileinit(){
                 scrollTop = 0;
             }
             
-            $("#luckysheet-scrollbar-y").scrollTop(scrollTop);
-
+            if(!Store.touchDirection || Store.touchDirection === 'y') {
+              $("#luckysheet-scrollbar-y").scrollTop(scrollTop);
+            }
             luckysheet_touchmove_startPos.vy_y = slideY;
             luckysheet_touchmove_startPos.scrollTop = scrollTop;
 
-            $("#luckysheet-scrollbar-x").scrollLeft(scrollLeft);
-
+            if(!Store.touchDirection || Store.touchDirection === 'x') {
+              $("#luckysheet-scrollbar-x").scrollLeft(scrollLeft);
+            }
             luckysheet_touchmove_startPos.vy_x = slideX;
-
             luckysheet_touchmove_startPos.scrollLeft = scrollLeft;
-   
-
         }
         else if(luckysheet_touchhandle_status){//选区
             let mouse = mouseposition(touch.pageX, touch.pageY);
@@ -184,25 +188,27 @@ export default function mobileinit(){
                     if(vy_y<=0){
                         vy_y = 0;
                     }
-         
                     if(luckysheet_touchmove_startPos.vy_y>0){
-                        luckysheet_touchmove_startPos.scrollTop -= vy_y;
+                      luckysheet_touchmove_startPos.scrollTop -= vy_y;
                     }
                     else{
                         luckysheet_touchmove_startPos.scrollTop += vy_y;
                     }
-            
-                    $("#luckysheet-scrollbar-y").scrollTop(luckysheet_touchmove_startPos.scrollTop);
-            
+                    if(!Store.touchDirection || Store.touchDirection === 'y') {
+                      $("#luckysheet-scrollbar-y").scrollTop(luckysheet_touchmove_startPos.scrollTop);
+                    }
+                    
                     if(luckysheet_touchmove_startPos.vy_x>0){
-                        luckysheet_touchmove_startPos.scrollLeft -= vy_x;
+                      luckysheet_touchmove_startPos.scrollLeft -= vy_x;
                     }
                     else{
                         luckysheet_touchmove_startPos.scrollLeft += vy_x;
                     }
-            
-                    $("#luckysheet-scrollbar-x").scrollLeft(luckysheet_touchmove_startPos.scrollLeft);
-         
+                    if(!Store.touchDirection || Store.touchDirection === 'x') {
+                      
+                      $("#luckysheet-scrollbar-x").scrollLeft(luckysheet_touchmove_startPos.scrollLeft);
+                    }
+
                     if(vy_x<=0 && vy_y<=0){
                         clearInterval(_scrollTimer);
                     }
@@ -214,6 +220,7 @@ export default function mobileinit(){
         // luckysheet_touchmove_startPos = {};
 
         luckysheet_touchhandle_status = false;
+        if(Store.touchDirection) Store.touchDirection = ''
     })
 
     //滑动选择选区

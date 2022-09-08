@@ -241,7 +241,6 @@ export default function luckysheetHandler() {
             }
 
             // colscroll = col_ed == 0 ? 0 : visibledatacolumn_c[col_ed - 1];
-
             $("#luckysheet-scrollbar-x").scrollLeft(scrollLeft);
         }
 
@@ -251,7 +250,7 @@ export default function luckysheetHandler() {
         }, 500);
     });
 
-    $("#luckysheet-scrollbar-x").scroll(function(){
+    $("#luckysheet-scrollbar-x").scroll(function(e){
         // setTimeout(function(){
             luckysheetscrollevent();
         // },10); 
@@ -1818,7 +1817,6 @@ export default function luckysheetHandler() {
                         else {
                             sleft = left + (x - winW) / 2;
                         }
-
                         $("#luckysheet-scrollbar-x").scrollLeft(sleft);
                     }
                 }
@@ -2407,7 +2405,7 @@ export default function luckysheetHandler() {
                         col_pre = col_location[0],
                         col_index = col_location[2];
                     
-                    if ((x + 3) - Store.luckysheet_cols_change_size_start[0] > 30 && x < winW + scrollLeft - 100) {
+                    if ((x + 3) - Store.luckysheet_cols_change_size_start[0] > 30 && x < winW + scrollLeft - Store.bottomReserveWidth) {
                         $("#luckysheet-change-size-line").css({ "left": x });
                         $("#luckysheet-cols-change-size").css({ "left": x - 2 });
                     }
@@ -2423,7 +2421,7 @@ export default function luckysheetHandler() {
                         row_pre = row_location[0],
                         row_index = row_location[2];
 
-                    if ((y + 3) - Store.luckysheet_rows_change_size_start[0] > 19 && y < winH + scrollTop - 200) {
+                    if ((y + 3) - Store.luckysheet_rows_change_size_start[0] > 19 && y < winH + scrollTop - Store.bottomReserveHeight) {
                         $("#luckysheet-change-size-line").css({ "top": y });
                         $("#luckysheet-rows-change-size").css({ "top": y });
                     }
@@ -3647,10 +3645,14 @@ export default function luckysheetHandler() {
                 size = 19;
             }
 
-            if (y >= winH - 200 + scrollTop) {
-                size = winH - 200 - Store.luckysheet_rows_change_size_start[0] + scrollTop;
+            if (y >= winH - Store.bottomReserveHeight + scrollTop) {
+                size = winH - Store.bottomReserveHeight - Store.luckysheet_rows_change_size_start[0] + scrollTop;
             }
 
+            if (size < 0) {
+                size = 30
+            }
+            
             let cfg = $.extend(true, {}, Store.config);
             if (cfg["rowlen"] == null) {
                 cfg["rowlen"] = {};
@@ -3748,8 +3750,8 @@ export default function luckysheetHandler() {
                 size = 30;
             }
 
-            if (x >= winW - 100 + scrollLeft) {
-                size = winW - 100 - Store.luckysheet_cols_change_size_start[0] + scrollLeft;
+            if (x >= winW - Store.bottomReserveWidth + scrollLeft) {
+                size = winW - Store.bottomReserveWidth - Store.luckysheet_cols_change_size_start[0] + scrollLeft;
             }
 
             let cfg = $.extend(true, {}, Store.config);
@@ -4793,7 +4795,7 @@ export default function luckysheetHandler() {
             image.style.height = "100%";
         }
 
-        let maxHeight = $(window).height() - 200;
+        let maxHeight = $(window).height() - Store.bottomReserveHeight;
         tooltip.screenshot(locale_screenshot.screenshotTipSuccess, '<div id="luckysheet-confirm-screenshot-save" style="height:' + maxHeight + 'px;overflow:auto;"></div>', url);
         $("#luckysheet-confirm-screenshot-save").append(image);
         newCanvas.remove();

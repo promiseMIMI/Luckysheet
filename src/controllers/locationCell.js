@@ -115,7 +115,7 @@ const luckysheetLocationCell = {
             $("#luckysheet-locationCell-dialog .listItem .subbox label").css("color", "#666");
 
             $(this).siblings(".subbox").find("input:checkbox").removeAttr("disabled");
-            $(this).siblings(".subbox").find("label").css("color", "#000");
+            $(this).siblings(".subbox").find("label").css("color", Store.fontThemeColor);
         });
 
         $(document).off("click.locationCellConfirm").on("click.locationCellConfirm", "#luckysheet-locationCell-dialog #luckysheet-locationCell-dialog-confirm", function(){

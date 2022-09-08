@@ -31,9 +31,10 @@ export default function rhchInit(rowheight, colwidth) {
         }
 
         // 如果增加行和回到顶部按钮隐藏，则减少底部空白区域，但是预留足够空间给单元格下拉按钮
-        if (!luckysheetConfigsetting.enableAddRow && !luckysheetConfigsetting.enableAddBackTop && Store.cellMainSrollBarSize) {
+        // && Store.cellMainSrollBarSize
+        if (!luckysheetConfigsetting.enableAddRow && !luckysheetConfigsetting.enableAddBackTop) {
             // Store.rh_height += 6; // 页面存在滚动条，底部增加9px空白区域
-            Store.rh_height += 0; // 页面存在滚动条，底部增加9px空白区域
+            Store.rh_height += (Store.allowEdit ? 120 : 0); // 页面存在滚动条，底部增加9px空白区域
         } else {
             Store.rh_height += 80;  //最底部增加空白
         }
@@ -45,8 +46,8 @@ export default function rhchInit(rowheight, colwidth) {
         Store.visibledatacolumn = [];
         Store.ch_width = 0;
 
-        // let maxColumnlen = 120;
-        let maxColumnlen = 0;
+        let maxColumnlen = Store.allowEdit ? 120 : 0;
+        // let maxColumnlen = 0;
 
         for (let c = 0; c < colwidth; c++) {
             let firstcolumnlen = Store.defaultcollen;

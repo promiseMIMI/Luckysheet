@@ -604,7 +604,6 @@ const menuButton = {
                 $("body").first().append(menu);
                 $menuButton = $("#" + menuButtonId);
                 // REVISE 字体颜色默认选择框初始化
-                console.log(luckysheetConfigsetting.defaultTextColor, 'luckysheetConfigsetting.defaultTextColor')
                 $("#" + menuButtonId).find(".luckysheet-color-selected").spectrum({
                     showPalette: true,
                     showPaletteOnly: true,
@@ -1107,7 +1106,7 @@ const menuButton = {
 
                     _this.setLineDash(canvasborder, itemvalue, "h", 0, 5, 100, 5);
                     
-                    canvasborder.strokeStyle = "#000000";
+                    canvasborder.strokeStyle = Store.borderItemColor;
                     canvasborder.stroke();
                     canvasborder.closePath();
                 });
@@ -2912,7 +2911,6 @@ const menuButton = {
         //sheet 菜单展开
         $("#toolbar-unfold").click(function(e){
             Store.toolbarUnfold = true
-            console.log(Store)
             // const toolbarHtml = menuToolBar()
             // $("#luckysheet-wa-editor").html(toolbarHtml).height('64px')
             // setTimeout(() => {
