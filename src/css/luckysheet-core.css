@@ -213,6 +213,8 @@
     border-bottom: 1px solid #d4d4d4;
     white-space: nowrap;
     transition: all 0.2s;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 /* 
@@ -1771,15 +1773,19 @@ body:not(.ewa-ipad) .luckysheet-rows-h-cell-sel:hover {
 } */
 
 .luckysheet-scrollbar-x {
-    bottom: 0px;
-    /* left: 44px; */
-    overflow-x: hidden;
+  bottom: 0px;
+  /* left: 44px; */
+  overflow-x: hidden;
+  /* firefox */
+  scrollbar-width: thin;
 }
 
 .luckysheet-scrollbar-y {
-    right: 0px;
-    top: 0px;
-    overflow-y: hidden;
+  right: 0px;
+  top: 0px;
+  overflow-y: hidden;
+   /* firefox */
+  scrollbar-width: thin;
 }
 
 .luckysheet:hover .luckysheet-scrollbar-x {
@@ -7439,4 +7445,9 @@ fieldset[disabled] .btn-danger.focus {
 }
 .luckysheet-toolbar-button, .luckysheet-toolbar-menu-button {
     vertical-align: baseline;
+}
+
+#luckysheet-filter-orderby-color-content {
+  max-height: 100px;
+  overflow: auto;
 }

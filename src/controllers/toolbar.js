@@ -701,8 +701,8 @@ export function createToolbarHtml() {
             </div>
             <!-- tips-slot -->
         </div>`, //'freeze mode'
-        sortAndFilter: `<div class="luckysheet-toolbar-select luckysheet-toolbar-menu-button luckysheet-inline-block" data-tips="${toolbar.sortAndFilter}"
-        id="luckysheet-icon-autofilter" role="button" style="user-select: none;">
+        sortAndFilter: `<div id="luckysheet-icon-autofilter" style="display: inline-block;"><div class="luckysheet-toolbar-select luckysheet-toolbar-menu-button luckysheet-inline-block" data-tips="${toolbar.sortAndFilter}"
+        role="button" style="user-select: none;">
             <div class="luckysheet-toolbar-menu-button-outer-box luckysheet-inline-block"
             style="user-select: none;">
                 <div class="luckysheet-toolbar-button-inner-box luckysheet-inline-block"
@@ -718,9 +718,10 @@ export function createToolbarHtml() {
                 </div>
             </div>
             <!-- tips-slot -->
+          </div>
         </div>`, //'Sort and filter'
-        conditionalFormat: `<div class="luckysheet-toolbar-select luckysheet-toolbar-menu-button luckysheet-inline-block" data-tips="${toolbar.conditionalFormat}"
-        id="luckysheet-icon-conditionformat" role="button" style="user-select: none;">
+        conditionalFormat: `<div id="luckysheet-icon-conditionformat" style="display: inline-block;"><div class="luckysheet-toolbar-select luckysheet-toolbar-menu-button luckysheet-inline-block" data-tips="${toolbar.conditionalFormat}"
+        role="button" style="user-select: none;">
             <div class="luckysheet-toolbar-menu-button-outer-box luckysheet-inline-block"
             style="user-select: none;">
                 <div class="luckysheet-toolbar-menu-button-inner-box luckysheet-inline-block"
@@ -737,6 +738,7 @@ export function createToolbarHtml() {
                 </div>
             </div>
             <!-- tips-slot -->
+          </div>
         </div>`, //'Conditional Format'
         dataVerification: `<div class="luckysheet-toolbar-button-split-left luckysheet-toolbar-button luckysheet-inline-block"
         data-tips="${toolbar.dataVerification}" id="luckysheet-dataVerification-btn-title" role="button" style="user-select: none;">
@@ -791,8 +793,8 @@ export function createToolbarHtml() {
                 </div>
             </div>
         </div>`, //'screenshot'
-        findAndReplace: `<div class="luckysheet-toolbar-select luckysheet-toolbar-menu-button luckysheet-inline-block" data-tips="${toolbar.findAndReplace}"
-        id="luckysheet-icon-seachmore" role="button" style="user-select: none;">
+        findAndReplace: `<div id="luckysheet-icon-seachmore" style="display: inline-block;"><div class="luckysheet-toolbar-select luckysheet-toolbar-menu-button luckysheet-inline-block" data-tips="${toolbar.findAndReplace}"
+         role="button" style="user-select: none;">
             <div class="luckysheet-toolbar-menu-button-outer-box luckysheet-inline-block"
             style="user-select: none;">
                 <div class="luckysheet-toolbar-button-inner-box luckysheet-inline-block"
@@ -809,7 +811,7 @@ export function createToolbarHtml() {
                 </div>
             </div>
             <!-- tips-slot -->
-        </div>`, //'Find and Replace'
+        </div></div>`, //'Find and Replace'
         protection: `<div class="luckysheet-toolbar-button-split-left luckysheet-toolbar-button luckysheet-inline-block"
         data-tips="${toolbar.protection}" id="luckysheet-icon-protection" role="button" style="user-select: none;">
             <div class="luckysheet-toolbar-button-outer-box luckysheet-inline-block"

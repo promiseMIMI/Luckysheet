@@ -860,6 +860,8 @@ function initialFilterHandler(){
             }
             //颜色筛选子菜单
             $("#luckysheet-filter-orderby-color-submenu").remove();
+            // $("#luckysheet-filter-orderby-color-content").append('<div id="luckysheet-filter-orderby-color-submenu" class="luckysheet-cols-menu luckysheet-mousedown-cancel">'+content+'</div>');
+            // return
             $("body").first().append('<div id="luckysheet-filter-orderby-color-submenu" class="luckysheet-cols-menu luckysheet-mousedown-cancel">'+content+'</div>');
             let $t = $("#luckysheet-filter-orderby-color-submenu").end();
             let $con = $(this).parent();
@@ -878,7 +880,7 @@ function initialFilterHandler(){
                 top = winH - myh;
             }
     
-            $("#luckysheet-filter-orderby-color-submenu").css({ "top": top, "left": left }).show();
+            $("#luckysheet-filter-orderby-color-submenu").css({ "top": top, "left": left - 226 }).show();
         },
         function(){
             submenuhide = setTimeout(function () { $("#luckysheet-filter-orderby-color-submenu").hide(); }, 200);

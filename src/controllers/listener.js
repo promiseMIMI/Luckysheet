@@ -1,3 +1,13 @@
+/*
+ * @Author: lanseliuyia YCKJ_clj@163.com
+ * @Date: 2022-06-20 18:20:54
+ * @LastEditors: lanseliuyia YCKJ_clj@163.com
+ * @LastEditTime: 2022-09-15 14:45:07
+ * @FilePath: \Luckysheet-master\src\controllers\listener.js
+ * @Description: 
+ * 
+ * Copyright (c) 2022 by lanseliuyia YCKJ_clj@163.com, All Rights Reserved. 
+ */
 /**
  * Monitor special variables
  */
@@ -29,12 +39,14 @@ const initListener = function(){
             method.createHookFunction('updated',val)
         }
         undoAccessible(Store.jfredo.length);
-    } );
+    });
     createProxy(Store, 'jfundo',(target, property, val, receiver)=>{
         redoAccessible(Store.jfundo.length);
-    } );
-    
-
+    });
+    // Store.luckysheetfile[order]["frozen"]
+    createProxy(Store, 'jffrozen',(target, property, val, receiver)=>{
+      method.createHookFunction('updated', 'jffrozen')
+    });
 
     createProxy(Store, 'asyncLoad', (target, property, val, receiver)=>{
         if(property === 'length' && val === 0){

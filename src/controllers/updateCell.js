@@ -101,14 +101,13 @@ export function luckysheetupdateCell(row_index1, col_index1, d, cover, isnotfocu
     }
 
     $("#luckysheet-input-box").removeAttr("style").css({ 
-        "background-color": "#1E1E20", 
+        "background-color": "rgb(255, 255, 255)", 
         "padding": "0px 2px", 
         "font-size": `${Store.defaultFontSize}pt`,
         "right": "auto", 
         "overflow-y": "auto",
         "box-sizing": "initial",
         "display":"flex",
-        "color": "#fff",
     });
 
     if(luckysheetFreezen.freezenverticaldata != null || luckysheetFreezen.freezenhorizontaldata != null){
@@ -252,7 +251,6 @@ export function luckysheetupdateCell(row_index1, col_index1, d, cover, isnotfocu
 
         input_postition["left"] = newLeft-2;
     }
-
     $("#luckysheet-input-box").css(input_postition);
     $("#luckysheet-rich-text-editor").css(inputContentScale);
 
@@ -309,7 +307,6 @@ export function setCenterInputPosition(row_index, col_index, d){
     }
 
     input_postition["left"] = newLeft-2;
-
     $("#luckysheet-input-box").css(input_postition);
 }
 

@@ -6884,6 +6884,12 @@ export function checkTheStatusOfTheSelectedCells(type,status){
  */
 export function initScrollbar() {
   //回到顶部
-  $("#luckysheet-scrollbar-x").scrollLeft(0);
-  $("#luckysheet-scrollbar-y").scrollTop(0);
+  const scrollLeft = $("#luckysheet-scrollbar-x").scrollLeft(),
+        scrollTop = $("#luckysheet-scrollbar-y").scrollTop()
+  if (scrollLeft === 0 && scrollTop === 0) return
+  $("#luckysheet-scrollbar-x").scrollLeft(0)
+  $("#luckysheet-scrollbar-y").scrollTop(0)
+  // setTimeout(() => {
+  //   initScrollbar()
+  // }, 1000)
 }

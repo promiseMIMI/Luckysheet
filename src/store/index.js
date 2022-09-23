@@ -84,6 +84,7 @@ const Store = {
     clearjfundo: true,
     jfundo: [],
     jfredo: [],
+    jffrozen: [],
     lang: 'en', //language
     createChart: '',
     highlightChart: '',
@@ -156,7 +157,7 @@ const Store = {
         bg: null,
         bl: 0,
         ct: {fa: "General", t: "n"},
-        fc: "rgb(51, 51, 51)",
+        fc: "rgb(255, 255, 255)",
         ff: 0,
         fs: 11,
         ht: 1,

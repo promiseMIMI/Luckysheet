@@ -108,7 +108,6 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
     if($("#luckysheet-icon-morebtn-div").length == 0){
         $("body").first().append(morediv);
     }
-
     // $("#luckysheet-icon-morebtn-div").hide();
     $$("#luckysheet-icon-morebtn-div").style.visibility = 'hidden';
     // $("#luckysheet-icon-morebtn-div > div").appendTo($("#luckysheet-wa-editor"));
@@ -118,8 +117,11 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
         const $container =  $("#luckysheet-wa-editor")[0];
 
         $container.appendChild(document.createTextNode(" "));
-
-        $container.appendChild($t);
+        if($("#luckysheet-wa-editor #luckysheet-icon-fullscreen").length) $("#luckysheet-wa-editor #luckysheet-icon-fullscreen")[0].before($t)
+        else if($("#luckysheet-wa-editor #luckysheet-icon-exit-fullscreen").length) {
+          if(Store.toolbarUnfold) $("#luckysheet-wa-editor .unfold-tools-split-line:last")[0].before($t)
+          else $("#luckysheet-wa-editor #luckysheet-icon-exit-fullscreen")[0].before($t)
+        } else $container.appendChild($t);
     });
 
     $("#luckysheet-icon-morebtn").remove();
@@ -128,7 +130,6 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
     const toobarWidths = Store.toobarObject.toobarWidths;
     const toobarElements = Store.toobarObject.toobarElements;
     let moreButtonIndex = 0;
-
     // When you resize the window during initialization, you will find that the dom has not been rendered yet
     if(toobarWidths == undefined){
         return;
@@ -137,30 +138,36 @@ export default function luckysheetsizeauto(isRefreshCanvas=true) {
     for (let index = toobarWidths.length - 1; index >= 0; index--) {
 
         // #luckysheet-icon-morebtn button width plus right is 83px
-        if(toobarWidths[index] < gridW - 90){
+        if(toobarWidths[index] < gridW - 200){
             moreButtonIndex = index;
-            if(moreButtonIndex < toobarWidths.length - 1){
+            // if(moreButtonIndex < toobarWidths.length - 1){
 
-                ismore = true;
-            }
+            //     ismore = true;
+            // }
             break;
         }
     }
+    if(Store.toolbarUnfold) moreButtonIndex = toobarElements.length - 1
     // 从起始位置开始，后面的元素统一挪到下方隐藏DIV中
     for (let index = moreButtonIndex; index < toobarElements.length; index++) {
         const element = toobarElements[index];
+        if(index === toobarElements.length - 1 && (element === '#luckysheet-icon-fullscreen' || element === '#luckysheet-icon-exit-fullscreen')) {
+          // $("#luckysheet-wa-editor").append($(`${element}`));
+          break
+        }
         if(element instanceof Array){
             for(const ele of element){
                 $("#luckysheet-icon-morebtn-div").append($(`${ele}`));
+                ismore = true
             }
         }else{
             $("#luckysheet-icon-morebtn-div").append($(`${element}`));
+            ismore = true
         }
 
     }
 
     if(ismore){
-
         $("#luckysheet-wa-editor").append(morebtn);
         $("#luckysheet-icon-morebtn").click(function(){
 

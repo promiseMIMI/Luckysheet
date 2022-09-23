@@ -52,7 +52,7 @@ export const defaultUnfoldToolbar = [
 	[
 		{key: 'image', tipKey: 'insertImage'},
 		{key: 'link', tipKey: 'insertLink'},
-		{key: 'pivotTable',},
+		// {key: 'pivotTable',},
 		{key: 'function', tipKey: 'sum'},
 	],
 	[

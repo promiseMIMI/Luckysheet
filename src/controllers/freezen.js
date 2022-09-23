@@ -1699,6 +1699,7 @@ const luckysheetFreezen = {
 
         // store frozen
         Store.luckysheetfile[order]["frozen"] = frozen[operate];
+        Store.jffrozen.push(frozen[operate]) // 冻结行列操作用来触发update回调
     },
     frozenTofreezen: function() {
         // get frozen type
