@@ -24,7 +24,6 @@ import selection from './selection';
 import controlHistory from './controlHistory';
 import splitColumn from './splitColumn';
 import {hideMenuByCancel} from '../global/cursorPos';
-import { luckysheetdefaultstyle } from './constant';
 import {checkProtectionLockedRangeList,checkProtectionAllSelected,checkProtectionSelectLockedOrUnLockedCells,checkProtectionNotEnable,checkProtectionAuthorityNormal} from './protection';
 import { openCellFormatModel } from './cellFormat';
 
@@ -4766,7 +4765,7 @@ export default function luckysheetHandler() {
             Store.devicePixelRatio * rh_height
         );
         ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
-        ctx_newCanvas.strokeStyle = luckysheetdefaultstyle.strokeStyle;        
+        ctx_newCanvas.strokeStyle = Store.luckysheetdefaultstyle.strokeStyle;        
         ctx_newCanvas.stroke();
         ctx_newCanvas.closePath();
 
@@ -4780,7 +4779,7 @@ export default function luckysheetHandler() {
             0
         );
         ctx_newCanvas.lineWidth = Store.devicePixelRatio * 2;
-        ctx_newCanvas.strokeStyle = luckysheetdefaultstyle.strokeStyle;        
+        ctx_newCanvas.strokeStyle = Store.luckysheetdefaultstyle.strokeStyle;        
         ctx_newCanvas.stroke();
         ctx_newCanvas.closePath();
 

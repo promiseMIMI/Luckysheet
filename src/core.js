@@ -88,6 +88,7 @@ luckysheet.create = function (setting) {
     Store.rh_height = extendsetting.rh_height;
     Store.cellMainSrollBarSize = extendsetting.cellMainSrollBarSize;
     Store.toolbarUnfold = extendsetting.toolbarUnfold; // 工具栏展开
+    if(extendsetting.luckysheetdefaultstyle) Store.luckysheetdefaultstyle = { ...Store.luckysheetdefaultstyle, ...extendsetting.luckysheetdefaultstyle }; // canvas相关属性
     
     server.gridKey = extendsetting.gridKey;
     server.loadUrl = extendsetting.loadUrl;

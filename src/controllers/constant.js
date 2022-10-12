@@ -1037,17 +1037,6 @@ const keycode = {
     SCROLLLOCK: 145
 };
 
-// REVISE Canvas表格默认颜色
-const luckysheetdefaultstyle = {
-    fillStyle: "#000000",
-    textBaseline: "middle",
-    strokeStyle: "#2B2C31", // 表格颜色
-    rowFillStyle: "#5e5e5e",
-    textAlign: 'center',
-    fillHeaderStyle: '#ffffff', // 表头索引栏字体颜色
-    fillContentStyle: 'transparent',
-}
-
 const luckysheetdefaultFont = function(){
     return  'normal normal normal '+ Store.defaultFontSize +'pt '+ locale().fontarray[0] +', "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC",  "WenQuanYi Micro Hei", sans-serif';
 } 
@@ -1177,7 +1166,6 @@ export {
     luckysheetlodingHTML,
     luckyColor,
     keycode,
-    luckysheetdefaultstyle,
     luckysheet_CFiconsImg,
     luckysheetdefaultFont,
     iconfontObjects

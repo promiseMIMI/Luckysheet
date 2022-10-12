@@ -173,6 +173,15 @@ const Store = {
     fontThemeColor: '#ffffff',
     touchDirection: '',
     enableMobileSingleScroll: true,
+    luckysheetdefaultstyle: {
+      fillStyle: "#000000",
+      textBaseline: "middle",
+      strokeStyle: "#2B2C31", // 表格颜色
+      rowFillStyle: "#5e5e5e",
+      textAlign: 'center',
+      fillHeaderStyle: '#ffffff', // 表头索引栏字体颜色
+      fillContentStyle: 'transparent',
+    }, // canvas 相关样式属性
 }
 
 export default Store;
