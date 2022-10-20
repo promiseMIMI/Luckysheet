@@ -1896,6 +1896,7 @@ export function genarate(value) {//万 单位格式增加！！！
         }
     }
     else if(value.toString().indexOf(".") > -1){
+        if(value && typeof value === 'string') value = value.replace(/(\s*$)/g, "") // 去除结尾空字符
         if(value.toString().indexOf(".") == value.toString().lastIndexOf(".")){
             var value1 = value.toString().split(".")[0];
             var value2 = value.toString().split(".")[1];
