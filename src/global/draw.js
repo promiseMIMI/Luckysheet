@@ -1154,6 +1154,7 @@ let nullCellRender = function(r, c, start_r, start_c, end_r, end_c,luckysheetTab
     else{
         luckysheetTableContent.fillStyle = fillStyle;
     }
+    luckysheetTableContent.fillStyle = menuButton.checkstatus(Store.flowdata, r, c , "bg");
 
     // 这里计算canvas需要绘制的矩形范围时,需要留下原本单元格边框的位置
     // 让 fillRect 绘制矩形的起始xy坐标增加1,绘制长宽减少1
